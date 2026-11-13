@@ -33,3 +33,4 @@ jobs:
             build/**/*_artefacts/Release/VST3/**
             build/**/*_artefacts/Release/Standalone/**
           if-no-files-found: error
+
