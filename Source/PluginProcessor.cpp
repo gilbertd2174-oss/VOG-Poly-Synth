@@ -170,4 +170,13 @@ void VOGPolySynthProAudioProcessor::getStateInformation(juce::MemoryBlock& dest)
 void VOGPolySynthProAudioProcessor::setStateInformation(const void* data,int size) {
     if(auto xml=getXmlFromBinary(data,size)) if(xml->hasTagName(state.state.getType())) state.replaceState(juce::ValueTree::fromXml(*xml));
 }
-juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter() { return new VOGPolySynthProAudioProcessor(); }
+juce::AudioProcessorEditor*
+VOGPolySynthProAudioProcessor::createEditor()
+{
+    return new VOGPolySynthProAudioProcessorEditor(*this);
+}
+
+juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter() 
+{ 
+    return new VOGPolySynthProAudioProcessor(); 
+}
